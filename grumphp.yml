@@ -1,0 +1,10 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+        phpcs:
+            standard: build/phpcs.xml
+            whitelist_patterns:
+                - /^config\/(.*)/
+                - /^routes\/(.*)/
+                - /^src\/(.*)/
