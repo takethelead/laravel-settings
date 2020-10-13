@@ -20,6 +20,13 @@ class Setting extends Model
         'saved' => SettingWasSaved::class,
     ];
 
+    protected array $booleanValues = [
+        'true',
+        'false',
+        '1',
+        '0',
+    ];
+
     public static function newFactory()
     {
         return SettingFactory::new();
@@ -27,7 +34,9 @@ class Setting extends Model
 
     public function getValueAttribute($value)
     {
-        if (is_null($this->type)) {
+        // The exists check is required to prevent exceptions when loading an empty model.
+        // Ex. when creating a setting using Laravel Nova.
+        if ($this->exists && is_null($this->type)) {
             throw new TypeNotQueriedException("The type column is not included in the query, this prevents value casting & decryption.");
         }
 
@@ -44,7 +53,10 @@ class Setting extends Model
 
     public function setValueAttribute($value): void
     {
-        if (is_string($value)) {
+        if (
+            !is_bool($value) &&
+            !in_array(strtolower($value), $this->booleanValues)
+        ) {
             $value = encrypt($value);
         }
 
