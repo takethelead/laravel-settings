@@ -20,13 +20,6 @@ class Setting extends Model
         'saved' => SettingWasSaved::class,
     ];
 
-    protected array $booleanValues = [
-        'true',
-        'false',
-        '1',
-        '0',
-    ];
-
     public static function newFactory()
     {
         return SettingFactory::new();
@@ -40,27 +33,20 @@ class Setting extends Model
             throw new TypeNotQueriedException("The type column is not included in the query, this prevents value casting & decryption.");
         }
 
+        if (!is_null($value)) {
+            $value = decrypt($value);
+        }
+
         try {
             settype($value, $this->type);
         } finally {
-            if (is_string($value)) {
-                $value = decrypt($value);
-            }
-
             return $value;
         }
     }
 
     public function setValueAttribute($value): void
     {
-        if (
-            !is_bool($value) &&
-            !in_array(strtolower($value), $this->booleanValues)
-        ) {
-            $value = encrypt($value);
-        }
-
-        $this->attributes['value'] = $value;
+        $this->attributes['value'] = encrypt($value);
     }
 
     public static function byKey(string $key)

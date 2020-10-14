@@ -2,6 +2,9 @@
 
 All notable changes to `Laravel settings` will be documented in this file
 
+## 1.1.0 - 2020-10-14
+- Boolean values will also be encrypted
+
 ## 1.0.1 - 2020-10-13
 
 - Fix casting issue

@@ -26,19 +26,6 @@ class SettingModelTest extends TestCase
     }
 
     /** @test */
-    public function it_does_not_encrypt_boolean_values()
-    {
-        Setting::factory()->create([
-            'value' => true,
-            'type' => 'boolean',
-        ]);
-
-        $setting = Setting::first();
-
-        $this->assertSame((string)$setting->value, $setting->getAttributes()['value']);
-    }
-
-    /** @test */
     public function it_can_query_a_setting_by_key()
     {
         Setting::factory()->createMany([
