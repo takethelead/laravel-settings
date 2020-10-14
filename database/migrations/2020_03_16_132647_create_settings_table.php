@@ -13,7 +13,7 @@ class CreateSettingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('key');
             $table->text('value');
-            $table->string('type')->nullable();
+            $table->string('type');
             $table->timestamps();
 
             $table->index('key');
