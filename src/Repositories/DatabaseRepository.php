@@ -22,7 +22,7 @@ class DatabaseRepository
     public function overwriteDefaults(array $overwrites): DatabaseRepository
     {
         foreach ($overwrites as $configKey => $settingName) {
-            if (!$this->config->has($configKey)) {
+            if (! $this->config->has($configKey)) {
                 throw new ConfigKeyNotFoundException("Config key \"$configKey\" could not be found.");
             }
 
@@ -30,6 +30,7 @@ class DatabaseRepository
 
             if (is_null($setting)) {
                 report(new SettingNotFoundException("$settingName could not be found."));
+
                 continue;
             }
 

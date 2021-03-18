@@ -15,7 +15,7 @@ class TestCase extends OrchestraTestCase
     {
         return [
             SettingsServiceProvider::class,
-            EventServiceProvider::class
+            EventServiceProvider::class,
         ];
     }
 }
