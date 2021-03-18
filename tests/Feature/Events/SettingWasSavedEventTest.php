@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Event;
 use TakeTheLead\Settings\Events\SettingWasSaved;
 use TakeTheLead\Settings\Models\Setting;
 use TakeTheLead\Settings\Tests\TestCase;
-use Closure;
 
 class SettingWasSavedEventTest extends TestCase
 {

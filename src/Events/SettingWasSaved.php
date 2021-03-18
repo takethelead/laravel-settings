@@ -9,7 +9,9 @@ use TakeTheLead\Settings\Models\Setting;
 
 class SettingWasSaved
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     public Setting $setting;
 

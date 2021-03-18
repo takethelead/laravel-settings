@@ -2,18 +2,12 @@
 
 namespace TakeTheLead\Settings;
 
-use Composer\Command\ConfigCommand;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use TakeTheLead\Settings\Console\ListSettingsCommand;
 use TakeTheLead\Settings\Console\UpdateSettingCommand;
-use TakeTheLead\Settings\Exceptions\ConfigKeyNotFoundException;
-use TakeTheLead\Settings\Exceptions\SettingNotFoundException;
-use TakeTheLead\Settings\Models\Setting;
 use TakeTheLead\Settings\Repositories\Config;
 use TakeTheLead\Settings\Repositories\DatabaseRepository;
 

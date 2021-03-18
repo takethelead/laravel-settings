@@ -2,10 +2,7 @@
 
 namespace TakeTheLead\Settings\Tests\Unit\Repositories;
 
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Log;
 use TakeTheLead\Settings\Exceptions\ConfigKeyNotFoundException;
-use TakeTheLead\Settings\Exceptions\SettingNotFoundException;
 use TakeTheLead\Settings\Models\Setting;
 use TakeTheLead\Settings\Repositories\DatabaseRepository;
 use TakeTheLead\Settings\Tests\TestCase;

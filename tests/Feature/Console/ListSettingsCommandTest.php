@@ -2,7 +2,6 @@
 
 namespace TakeTheLead\Settings\Tests\Feature\Console;
 
-use Illuminate\Contracts\Console\Kernel;
 use TakeTheLead\Settings\Console\ListSettingsCommand;
 use TakeTheLead\Settings\Models\Setting;
 use TakeTheLead\Settings\Tests\TestCase;
