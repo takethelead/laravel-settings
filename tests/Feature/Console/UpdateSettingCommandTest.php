@@ -153,6 +153,30 @@ class UpdateSettingCommandTest extends TestCase
             ->assertExitCode(0);
     }
 
+    /** @test */
+    public function it_can_create_json_settings()
+    {
+        $this->artisan(UpdateSettingCommand::class, ['setting' => 'new_setting'])
+            ->expectsQuestion("Setting 'new_setting' does not exist, do you want to create it?", true)
+            ->expectsQuestion("Select the type for your setting", 'json')
+            ->expectsQuestion('Enter the value for the setting', '{"ttl": "Is Awesome!", "LARAVEL": true}')
+            ->expectsOutput("Setting new_setting has been created")
+            ->assertExitCode(0);
+
+        $this->assertDatabaseHas('settings', ['key' => 'new_setting']);
+
+        $setting = Setting::where('key', 'new_setting')->first();
+
+        $this->assertEquals([
+            'key' => 'new_setting',
+            'type' => 'json',
+        ], $setting->only('key', 'type'));
+
+        $this->assertIsObject($setting->value);
+        $this->assertObjectHasAttribute('ttl', $setting->value);
+        $this->assertObjectHasAttribute('LARAVEL', $setting->value);
+    }
+
     private function resetSetting($managable = true)
     {
         Setting::first()->update([

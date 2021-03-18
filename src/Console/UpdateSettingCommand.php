@@ -15,13 +15,13 @@ class UpdateSettingCommand extends Command
     {
         $setting = Setting::where('key', $this->argument('setting'))->first();
 
-        if (!is_null($setting)) {
+        if (! is_null($setting)) {
             $this->updateSetting($setting);
 
             return;
         }
 
-        if (!$this->confirm("Setting '" . $this->argument('setting') . "' does not exist, do you want to create it?")) {
+        if (! $this->confirm("Setting '" . $this->argument('setting') . "' does not exist, do you want to create it?")) {
             $this->error('Ok, stopped!');
 
             return;
@@ -34,7 +34,7 @@ class UpdateSettingCommand extends Command
 
     private function createSetting()
     {
-        $type = $this->choice('Select the type for your setting', ['string', 'boolean']);
+        $type = $this->choice('Select the type for your setting', ['string', 'boolean', 'json']);
 
         $setting = Setting::create([
             'key' => $this->argument('setting'),
@@ -53,7 +53,7 @@ class UpdateSettingCommand extends Command
 
         $this->showSettingInTable($setting);
 
-        if (!$this->confirm('Are you sure that you want to continue editing this setting?')) {
+        if (! $this->confirm('Are you sure that you want to continue editing this setting?')) {
             $this->error('Ok, aborted!');
 
             return;
@@ -67,7 +67,7 @@ class UpdateSettingCommand extends Command
 
         $this->previewChangesInTable($this->argument('setting'), $value, $setting->type);
 
-        if (!$this->confirm('Are the settings above correct? Note that once confirmed it will be updated in the database!')) {
+        if (! $this->confirm('Are the settings above correct? Note that once confirmed it will be updated in the database!')) {
             $this->error('Ok, aborted!');
 
             return;
@@ -85,7 +85,7 @@ class UpdateSettingCommand extends Command
 
     private function getSettingValue(string $type)
     {
-        if ($type === 'string') {
+        if (in_array($type, ['string', 'json'])) {
             return $this->ask('Enter the value for the setting');
         }
 
@@ -110,7 +110,11 @@ class UpdateSettingCommand extends Command
 
     private function formatValueForTableView($value): string
     {
-        if (!is_bool($value)) {
+        if (is_object($value)) {
+            return json_encode($value);
+        }
+
+        if (! is_bool($value)) {
             return $value;
         }
 
@@ -135,7 +139,7 @@ class UpdateSettingCommand extends Command
         $this->table(
             ['Key', 'Value', 'Type'],
             [
-                [$key, $value, $type],
+                [$key, $this->formatValueForTableView($value), $type],
             ],
             'box'
         );

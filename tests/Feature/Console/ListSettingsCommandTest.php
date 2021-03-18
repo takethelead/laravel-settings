@@ -34,6 +34,11 @@ class ListSettingsCommandTest extends TestCase
                 'value' => false,
                 'type' => 'boolean',
             ],
+            [
+                'key' => 'setting_5',
+                'value' => '{"ttl": "Is Awesome!, "LARAVEL": true}',
+                'type' => 'json',
+            ],
         ]);
     }
 
@@ -41,7 +46,7 @@ class ListSettingsCommandTest extends TestCase
     public function it_can_list_settings()
     {
         $this->artisan(ListSettingsCommand::class)
-            ->expectsOutput('Listing 4 settings')
+            ->expectsOutput('Listing 5 settings')
             ->assertExitCode(0);
     }
 }

@@ -33,12 +33,16 @@ class Setting extends Model
             throw new TypeNotQueriedException("The type column is not included in the query, this prevents value casting & decryption.");
         }
 
-        if (!is_null($value)) {
+        if (! is_null($value)) {
             $value = decrypt($value);
         }
 
         try {
-            settype($value, $this->type);
+            if ($this->type === 'json') {
+                $value = json_decode($value);
+            } else {
+                settype($value, $this->type);
+            }
         } finally {
             return $value;
         }
@@ -64,11 +68,11 @@ class Setting extends Model
             return false;
         }
 
-        if ($setting->type === 'string') {
+        if (in_array($setting->type, ['string', 'json'])) {
             throw new InvalidTypeException('Can not check if setting of type string is enabled');
         }
 
-        if (!$setting->value) {
+        if (! $setting->value) {
             return false;
         }
 
@@ -77,7 +81,7 @@ class Setting extends Model
 
     public static function isNotEnabled(string $key)
     {
-        return !static::isEnabled($key);
+        return ! static::isEnabled($key);
     }
 
     public static function getCacheKey(string $key): string

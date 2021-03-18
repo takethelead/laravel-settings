@@ -34,6 +34,10 @@ class ListSettingsCommand extends Command
 
     private function formatValue($value)
     {
+        if (is_object($value)) {
+            return json_encode($value);
+        }
+
         if (is_bool($value)) {
             return $value ? 'Yes' : 'No';
         }

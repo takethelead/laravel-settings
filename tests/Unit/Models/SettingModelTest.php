@@ -120,4 +120,30 @@ class SettingModelTest extends TestCase
 
         Setting::all(['key', 'value'])->toArray();
     }
+
+    /** @test */
+    public function it_convert_json_settings_to_objects()
+    {
+        $setting = Setting::factory()->create([
+            'key' => 'json_setting',
+            'value' => '{"ttl": "Is Awesome!", "LARAVEL": true}',
+            'type' => 'json',
+        ]);
+
+        $this->assertIsObject($setting->value);
+        $this->assertEquals('Is Awesome!', $setting->value->ttl);
+        $this->assertTrue($setting->value->LARAVEL);
+    }
+
+    /** @test */
+    public function it_does_not_fail_on_json_settings_with_invalid_json_data()
+    {
+        $setting = Setting::factory()->create([
+            'key' => 'json_setting',
+            'value' => '{"ttl": "Is Awesome!, "LARAVEL": true}',
+            'type' => 'json',
+        ]);
+
+        $this->assertNull($setting->value);
+    }
 }

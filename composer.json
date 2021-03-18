@@ -5,6 +5,7 @@
     "homepage": "https://github.com/takethelead/laravel-settings",
     "require": {
         "php": "^7.4",
+        "ext-json": "*",
         "illuminate/config": "^8.0",
         "illuminate/database": "^8.0",
         "illuminate/events": "^8.0",
