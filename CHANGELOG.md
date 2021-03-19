@@ -2,6 +2,12 @@
 
 All notable changes to `Laravel settings` will be documented in this file
 
+## 1.2.0 - 2021-03-19
+- Add support for json settings
+- Bugfix: bumped minimum required Laravel version to 8.2 as the `newFactory` method was added then. On Lower versions the test suite would fail.
+- Bugfix: autoloading & namespace issue
+- Configured Github Actions
+
 ## 1.1.1 - 2020-10-14
 - The type column should not be nullable
 
