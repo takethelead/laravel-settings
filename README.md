@@ -1,5 +1,9 @@
 # Laravel settings
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/takethelead/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/takethelead/laravel-settings)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/takethelead/laravel-settings/Tests?label=tests)](https://github.com/takethelead/laravel-settings/actions?query=workflow%3ATests+branch%3Amaster)
+[![Total Downloads](https://img.shields.io/packagist/dt/takethelead/laravel-settings.svg?style=flat-square)](https://packagist.org/packages/takethelead/laravel-settings)
+
 Overwrite config settings with values from the database.
 
 ## Installation
@@ -78,10 +82,29 @@ If you cache your configuration files using `php artisan config:cache`, the over
 
 ## Testing
 
-``` bash
+```bash
 composer test
 ```
 
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Contributing
+
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+
+## Security Vulnerabilities
+
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Credits
+
+- [Joren Van Hocht](https://github.com/jorenvh)
+- [Take The Lead](https://takethelead.be)
+- [All Contributors](../../contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
