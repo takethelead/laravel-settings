@@ -2,7 +2,6 @@
 
 namespace TakeTheLead\Settings\Tests\Feature\Events;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Event;
 use TakeTheLead\Settings\Events\SettingWasSaved;
 use TakeTheLead\Settings\Models\Setting;

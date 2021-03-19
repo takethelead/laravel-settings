@@ -6,10 +6,10 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "illuminate/config": "^8.0",
-        "illuminate/database": "^8.0",
-        "illuminate/events": "^8.0",
-        "illuminate/validation": "^8.0"
+        "illuminate/config": "^8.2",
+        "illuminate/database": "^8.2",
+        "illuminate/events": "^8.2",
+        "illuminate/validation": "^8.2"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.0",
@@ -21,7 +21,7 @@
     "autoload": {
         "psr-4": {
             "TakeTheLead\\Settings\\": "src",
-            "TakeTheLead\\Database\\Facatories\\": "database/factories"
+            "TakeTheLead\\Settings\\Database\\Factories\\": "database/Factories"
         }
     },
     "autoload-dev": {

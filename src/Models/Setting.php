@@ -5,7 +5,7 @@ namespace TakeTheLead\Settings\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
-use TakeTheLead\Database\Facatories\SettingFactory;
+use TakeTheLead\Settings\Database\Factories\SettingFactory;
 use TakeTheLead\Settings\Events\SettingWasSaved;
 use TakeTheLead\Settings\Exceptions\InvalidTypeException;
 use TakeTheLead\Settings\Exceptions\TypeNotQueriedException;
@@ -20,7 +20,7 @@ class Setting extends Model
         'saved' => SettingWasSaved::class,
     ];
 
-    public static function newFactory()
+    protected static function newFactory()
     {
         return SettingFactory::new();
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace TakeTheLead\Database\Facatories;
+namespace TakeTheLead\Settings\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use TakeTheLead\Settings\Models\Setting;
