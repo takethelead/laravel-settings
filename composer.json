@@ -21,7 +21,7 @@
     "autoload": {
         "psr-4": {
             "TakeTheLead\\Settings\\": "src",
-            "TakeTheLead\\Settings\\Database\\Factories\\": "database/Factories"
+            "TakeTheLead\\Settings\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
