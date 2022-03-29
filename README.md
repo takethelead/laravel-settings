@@ -10,19 +10,19 @@ Overwrite config settings with values from the database.
 
 You can install the package via composer:
 
-```bash
+```shell
 composer require takethelead/laravel-settings
 ```
 
 In order to use this package you will need to publish its configuration file:
 
-```
+```shell
 php artisan vendor:publish --provider="TakeTheLead\Settings\SettingsServiceProvider" --tag="config"
 ```
 
 And migrate the database
 
-```
+```shell
 php artisan migrate
 ```
 
@@ -36,7 +36,7 @@ The keys of these config values can be defined in `config/laravel-settings.php`,
 
 Imagine the following config file
 
-```
+```php
 <?php 
 // config/some-config-file.php
 return [
@@ -48,7 +48,7 @@ return [
 In order to overwrite the value for `key2` you will have to create a new setting in the database.
 You can do this by running the following artisan command (or by creating a migration):
 
-```
+```shell
 // Updates an existing setting or creates a new one if it does not exists.
 php artisan laravel-settings:update fallback_value_for_key_2
 ```
@@ -57,7 +57,7 @@ php artisan laravel-settings:update fallback_value_for_key_2
 
 Now that we have created a new setting in the database we have to tell the application to overwrite it. You can do that in `config/laravel-settings.php`
 
-```
+```php
 // ...
 'overwrites' => [
     'some-config-file.key2' => 'the_database_setting_key_you_choose_in_the_previous_step',
@@ -82,7 +82,7 @@ If you cache your configuration files using `php artisan config:cache`, the over
 
 ## Testing
 
-```bash
+```shell
 composer test
 ```
 
