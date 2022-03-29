@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use TakeTheLead\Settings\Console\ListSettingsCommand;
 use TakeTheLead\Settings\Console\UpdateSettingCommand;
-use TakeTheLead\Settings\Repositories\Config;
 use TakeTheLead\Settings\Repositories\DatabaseRepository;
 
 class SettingsServiceProvider extends ServiceProvider
