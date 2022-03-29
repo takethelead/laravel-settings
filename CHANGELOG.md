@@ -2,6 +2,11 @@
 
 All notable changes to `Laravel settings` will be documented in this file
 
+## 1.3.0 - 2022-03-29
+- Dropped support for PHP 7.4
+- Added support for PHP 8.0 & 8.1
+- Added support for Laravel 9
+
 ## 1.2.0 - 2021-03-19
 - Add support for json settings
 - Bugfix: bumped minimum required Laravel version to 8.2 as the `newFactory` method was added then. On Lower versions the test suite would fail.
