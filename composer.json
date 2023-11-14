@@ -9,7 +9,8 @@
         "illuminate/config": "^8.2|^9.0|^10.0",
         "illuminate/database": "^8.2|^9.0|^10.0",
         "illuminate/events": "^8.2|^9.0|^10.0",
-        "illuminate/validation": "^8.2|^9.0|^10.0"
+        "illuminate/validation": "^8.2|^9.0|^10.0",
+        "nesbot/carbon": "^2.71"
     },
     "require-dev": {
         "orchestra/testbench": "^6.24|^7.0|^8.0",
