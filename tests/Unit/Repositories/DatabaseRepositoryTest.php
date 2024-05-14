@@ -9,6 +9,14 @@ use TakeTheLead\Settings\Tests\TestCase;
 
 class DatabaseRepositoryTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        // services.mailgun.secret is no longer a default config in Laravel 11
+        config()->set('services.mailgun.secret', null);
+    }
+
     /** @test */
     public function it_can_overwrite_settings_from_default_files()
     {
