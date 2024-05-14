@@ -2,9 +2,10 @@
 
 All notable changes to `Laravel settings` will be documented in this file
 
-## 1.4.1 - 2024-05-14
+## 2.0.0 - 2024-05-14
 - Added support for Laravel 11
 - Added support for PHP 8.3
+- Dropped support for Laravel 8
 
 ## 1.4.0 - 2023-12-12
 - Added support for Laravel 10
