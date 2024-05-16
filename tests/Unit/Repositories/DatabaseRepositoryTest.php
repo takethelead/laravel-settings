@@ -9,37 +9,29 @@ use TakeTheLead\Settings\Tests\TestCase;
 
 class DatabaseRepositoryTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        // services.mailgun.secret is no longer a default config in Laravel 11
-        config()->set('services.mailgun.secret', null);
-    }
-
     /** @test */
     public function it_can_overwrite_settings_from_default_files()
     {
         Setting::factory()->createMany([
             ['key' => 'APP_NAME', 'value' => 'Laravel settings', 'type' => 'string'],
-            ['key' => 'MAILGUN_SECRET', 'value' => 'MysecretForMailgun', 'type' => 'string'],
+            ['key' => 'SES_SECRET', 'value' => 'MysecretForMailgun', 'type' => 'string'],
             ['key' => 'APP_DEBUG', 'value' => true, 'type' => 'boolean'],
         ]);
 
         $this->assertEquals('Laravel', config('app.name'));
         $this->assertFalse(config('app.debug'));
-        $this->assertNull(config('services.mailgun.secret'));
+        $this->assertNull(config('services.ses.secret'));
 
         $databaseRepository = resolve(DatabaseRepository::class);
         $databaseRepository->overwriteDefaults([
             'app.name' => 'APP_NAME',
             'app.debug' => 'APP_DEBUG',
-            'services.mailgun.secret' => 'MAILGUN_SECRET',
+            'services.ses.secret' => 'SES_SECRET',
         ]);
 
         $this->assertEquals('Laravel settings', config('app.name'));
         $this->assertTrue(config('app.debug'));
-        $this->assertEquals('MysecretForMailgun', config('services.mailgun.secret'));
+        $this->assertEquals('MysecretForMailgun', config('services.ses.secret'));
     }
 
     /** @test */
