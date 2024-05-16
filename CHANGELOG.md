@@ -2,6 +2,12 @@
 
 All notable changes to `Laravel settings` will be documented in this file
 
+## 1.5.0 - 2024-05-16
+- Added support for Laravel 11
+- Added support for PHP 8.3
+- Dropped support for Laravel 8
+- Dropped support for Laravel 9
+
 ## 1.4.0 - 2023-12-12
 - Added support for Laravel 10
 - Dropped support for PHP 8.0
@@ -26,7 +32,7 @@ All notable changes to `Laravel settings` will be documented in this file
 ## 1.0.1 - 2020-10-13
 
 - Fix casting issue
-- Add extra check to make sure a model exists before throwing the TypeNotQueriedException 
+- Add extra check to make sure a model exists before throwing the TypeNotQueriedException
 
 ## 1.0.0 - 2020-10-13
 

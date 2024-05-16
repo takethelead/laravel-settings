@@ -171,8 +171,8 @@ class UpdateSettingCommandTest extends TestCase
         ], $setting->only('key', 'type'));
 
         $this->assertIsObject($setting->value);
-        $this->assertObjectHasAttribute('ttl', $setting->value);
-        $this->assertObjectHasAttribute('LARAVEL', $setting->value);
+        $this->assertTrue(property_exists($setting->value, 'ttl'));
+        $this->assertTrue(property_exists($setting->value, 'LARAVEL'));
     }
 
     private function resetSetting($managable = true)
